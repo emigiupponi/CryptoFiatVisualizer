@@ -1,57 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoFiat Visualizer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: #333333; /* Usar gris oscuro en lugar de negro */
-        }
-        .chart-container {
-            width: 80%; /* Ajusta esto para cambiar el tamaño de los gráficos */
-            height: 300px; /* Altura fija para los gráficos */
-            margin: 20px auto; /* Centra los gráficos y agrega margen superior/inferior */
-            border: 1px solid #ccc; /* Borde gris claro para contenedor de gráficos */
-            padding: 10px;
-            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1); /* Añadir una sombra ligera */
-        }
-    </style>
-</head>
-<body>
+import os
+import git
+from kaggle_secrets import UserSecretsClient
 
-<h1>CryptoFiat Visualizer</h1>
+# Retrieve GitHub token securely from Kaggle secrets
+user_secrets = UserSecretsClient()
+GITHUB_TOKEN = user_secrets.get_secret("GITHUB_TOKEN")
 
-<div class="chart-container">
-    <h2>Chart 1: Network Graph</h2>
-    <iframe src="fig_network_evolution.html" style="width:100%; height:100%; border:none;"></iframe>
-</div>
+# Set up the repository URL using the secured token
+REPO_URL = "https://{}@github.com/emigiupponi/CryptoFiatVisualizer.git".format(GITHUB_TOKEN)
 
-<div class="chart-container">
-    <h2>Chart 2: Comparative Metrics</h2>
-    <iframe src="fig_comparative_crypto_metrics.html" style="width:100%; height:100%; border:none;"></iframe>
-</div>
+# Clone the repository if not already done
+if not os.path.exists('repo'):
+    repo = git.Repo.clone_from(REPO_URL, 'repo')
 
-<div class="chart-container">
-    <h2>Chart 3: Heatmap</h2>
-    <iframe src="fig_heatmap_animated.html" style="width:100%; height:100%; border:none;"></iframe>
-</div>
+repo = git.Repo('repo')
 
-<div class="chart-container">
-    <h2>Chart 4: Volume Analysis</h2>
-    <iframe src="fig_vol_type_econ.html" style="width:100%; height:100%; border:none;"></iframe>
-</div>
+# Ajustar el tamaño de los gráficos antes de exportarlos
+fig_network_evolution.update_layout(width=700, height=400)
+fig_vol_type_econ.update_layout(width=700, height=400)
+fig_heatmap_animated.update_layout(width=700, height=400)
+fig_comparative_crypto_metrics.update_layout(width=700, height=400)
+fig_comparative_crypto_volumes.update_layout(width=700, height=400)
+fig_stacked_bar_crypto_volumes_2024.update_layout(width=700, height=400)
 
-<div class="chart-container">
-    <h2>Chart 5: Stacked Bar Crypto Volumes 2024</h2>
-    <iframe src="fig_stacked_bar_crypto_volumes_2024.html" style="width:100%; height:100%; border:none;"></iframe>
-</div>
+# Exportar los gráficos a archivos HTML
+fig_network_evolution.write_html("fig_network_evolution.html")
+fig_vol_type_econ.write_html("fig_vol_type_econ.html")
+fig_heatmap_animated.write_html("fig_heatmap_animated.html")
+fig_comparative_crypto_metrics.write_html("fig_comparative_crypto_metrics.html")
+fig_comparative_crypto_volumes.write_html("fig_comparative_crypto_volumes.html")
+fig_stacked_bar_crypto_volumes_2024.write_html("fig_stacked_bar_crypto_volumes_2024.html")
 
-<div class="chart-container">
-    <h2>Chart 6: Comparative Crypto Volumes</h2>
-    <iframe src="fig_comparative_crypto_volumes.html" style="width:100%; height:100%; border:none;"></iframe>
-</div>
+# Mover archivos HTML al repositorio
+os.system('cp *.html repo/')
 
-</body>
-</html>
+# Commit y push a GitHub
+repo.index.add([
+    'fig_network_evolution.html',
+    'fig_vol_type_econ.html',
+    'fig_heatmap_animated.html',
+    'fig_comparative_crypto_metrics.html',
+    'fig_comparative_crypto_volumes.html',
+    'fig_stacked_bar_crypto_volumes_2024.html'
+])
+
+repo.index.commit("Add resized crypto fiat visualizations")
+repo.remote(name='origin').push()
