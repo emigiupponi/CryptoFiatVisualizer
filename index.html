@@ -3,91 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoFiat Visualizer</title>
+    <title>CryptoFiatVisualizer Dashboard</title>
     <style>
         body {
-            font-family: 'Georgia', serif;
-            background-color: #F5F5F5; /* Fondo neutro */
-            color: #4D4D4D; /* Gris oscuro en lugar de negro */
+            font-family: Arial, sans-serif;
+            background-color: #F7F7F7;
+            color: #333333;
             margin: 0;
             padding: 20px;
         }
-        header {
-            background-color: #AA322F; /* Rojo oscuro */
-            color: #FFFFFF;
-            padding: 20px;
+
+        h1 {
             text-align: center;
-            font-size: 2.5em;
-            font-weight: bold;
+            color: #AA322F;
         }
-        h2 {
-            color: #4D4D4D; /* Subtítulos en gris oscuro */
-            font-size: 1.8em;
-            margin-top: 40px;
-            text-align: center;
-        }
+
         .container {
-            max-width: 900px; /* Estructura de columna central */
-            margin: 0 auto;
-            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            max-width: 1200px;
+            margin: auto;
         }
+
         .chart {
-            margin: 40px 0;
             background-color: #FFFFFF;
-            padding: 20px;
-            box-shadow: none; /* Eliminar recuadro negro */
-            border: none; /* Sin bordes */
+            padding: 15px;
+            border: 1px solid #DDDDDD;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         iframe {
-            width: 100%; /* Ajustar el tamaño del gráfico */
-            height: 400px; /* Achicar altura para más despeje visual */
-            border: none; /* Eliminar borde del iframe */
+            width: 100%;
+            height: 400px;
+            border: none;
         }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #4D4D4D; /* Gris oscuro en lugar de negro */
-            color: #FFFFFF;
-            margin-top: 40px;
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar {
+            grid-column: span 2;
+            background-color: #FFFFFF;
+            padding: 15px;
+            border: 1px solid #DDDDDD;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .sidebar select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
+    <h1>CryptoFiatVisualizer Dashboard</h1>
 
-    <header>
-        CryptoFiat Visualizer
-    </header>
+    <div class="sidebar">
+        <h3>Choose Chart Type</h3>
+        <select>
+            <option value="chart1">Network Graph</option>
+            <option value="chart2">Comparative Metrics</option>
+            <option value="chart3">Heatmap</option>
+            <option value="chart4">Volume Analysis</option>
+        </select>
+    </div>
 
     <div class="container">
-        <h2>Comparative Analysis of Cryptoasset Metrics</h2>
         <div class="chart">
-            <iframe src="fig_comparative_crypto_metrics.html"></iframe>
-        </div>
-        
-        <h2>Evolution of Cryptoasset Exchange Volumes</h2>
-        <div class="chart">
-            <iframe src="fig_heatmap_animated.html"></iframe>
-        </div>
-
-        <h2>Network Evolution of Crypto and Fiat Pairs</h2>
-        <div class="chart">
+            <h3>Chart 1: Network Graph</h3>
             <iframe src="fig_network_evolution.html"></iframe>
         </div>
-
-        <h2>Stacked Bar Chart of Crypto Volumes (2024)</h2>
         <div class="chart">
-            <iframe src="fig_stacked_bar_crypto_volumes_2024.html"></iframe>
+            <h3>Chart 2: Comparative Metrics</h3>
+            <iframe src="fig_comparative_crypto_metrics.html"></iframe>
         </div>
-
-        <h2>Cryptoasset Volumes by Economy Type (2024)</h2>
         <div class="chart">
+            <h3>Chart 3: Heatmap</h3>
+            <iframe src="fig_heatmap_animated.html"></iframe>
+        </div>
+        <div class="chart">
+            <h3>Chart 4: Volume Analysis</h3>
             <iframe src="fig_vol_type_econ.html"></iframe>
         </div>
     </div>
-
-    <footer>
-        &copy; 2024 CryptoFiat Visualizer
-    </footer>
-
 </body>
 </html>
