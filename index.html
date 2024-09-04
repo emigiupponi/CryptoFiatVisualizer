@@ -14,37 +14,39 @@
         }
 
         .container {
-            width: 90%;
+            width: 85%; /* Reduced width for more visual space */
             max-width: 1200px;
             margin: 20px auto;
-            padding: 20px;
+            padding: 15px; /* Reduced padding */
             background-color: #f9f9f9;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Lighter shadow */
         }
 
         .title {
-            font-size: 24px;
-            color: #AA322F; /* Dark red for title */
+            font-size: 22px; /* Slightly smaller font */
+            color: #333333; /* Neutral color for title */
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reduced margin */
         }
 
         .tabs {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reduced margin */
         }
 
         .tab {
-            padding: 10px 20px;
-            background-color: #AA322F;
-            color: white;
+            padding: 8px 16px; /* Smaller padding */
+            background-color: #ffffff; /* Neutral background for tabs */
+            color: #333333; /* Neutral tab color */
             cursor: pointer;
-            margin-right: 10px;
+            border: 1px solid #dddddd; /* Simple border */
+            margin-right: 5px;
         }
 
         .tab.active {
-            background-color: #333333;
+            background-color: #f9f9f9; /* Light grey for active tab */
+            border-bottom: 2px solid #333333; /* Slightly bold bottom border for active */
         }
 
         .content {
@@ -57,39 +59,39 @@
 
         .chart-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 20px;
-            align-items: center;
+            grid-template-columns: 1fr; /* Single column layout */
+            grid-gap: 20px; /* Spacing between charts */
         }
 
         .chart-box {
-            padding: 20px;
-            background-color: #ffffff; /* White background for charts */
-            border: 1px solid #dddddd;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 10px; /* Reduced padding */
+            background-color: #ffffff; /* White background for chart box */
+            border: 1px solid #dddddd; /* Simple border */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+            display: flex;
+            align-items: center;
         }
 
-        .chart-title {
-            font-size: 18px;
-            color: #AA322F; /* Dark red for chart titles */
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .chart-description {
-            font-size: 14px;
-            color: #555555;
-        }
-
-        iframe {
-            width: 100%;
+        .chart-box iframe {
+            width: 60%; /* Chart takes 60% of the box */
             height: 350px;
             border: none;
         }
 
+        .chart-description {
+            width: 40%; /* Description takes 40% of the box */
+            padding-left: 15px;
+            font-size: 14px;
+            color: #555555;
+        }
+
         @media (max-width: 768px) {
-            .chart-container {
-                grid-template-columns: 1fr;
+            .chart-box {
+                flex-direction: column; /* Stacks chart and description on smaller screens */
+            }
+            .chart-description, .chart-box iframe {
+                width: 100%;
+                padding: 0;
             }
         }
     </style>
@@ -128,10 +130,8 @@
 
         <!-- Tab 1: Methodology -->
         <div class="content active">
-            <div class="chart-container">
-                <div class="chart-box">
-                    <iframe src="fig_f1.html"></iframe>
-                </div>
+            <div class="chart-box">
+                <iframe src="fig_f1.html"></iframe>
                 <div class="chart-description">
                     <div class="chart-title">Chart 1: Network Visualization of Crypto-Fiat Trading Pairs</div>
                     <p>This graph shows the relationships between fiat currencies and cryptocurrencies in Binance, highlighting key connections and the centrality of each currency.</p>
@@ -139,10 +139,8 @@
                 </div>
             </div>
 
-            <div class="chart-container">
-                <div class="chart-box">
-                    <iframe src="fig_f2.html"></iframe>
-                </div>
+            <div class="chart-box">
+                <iframe src="fig_f2.html"></iframe>
                 <div class="chart-description">
                     <div class="chart-title">Chart 2: Distribution of Unique Cryptocurrencies by Fiat Currency</div>
                     <p>This chart illustrates the distribution of unique cryptocurrencies linked to different fiat currencies, emphasizing markets with the highest activity, such as Turkey and the European Union.</p>
@@ -150,10 +148,8 @@
                 </div>
             </div>
 
-            <div class="chart-container">
-                <div class="chart-box">
-                    <iframe src="fig_f3.html"></iframe>
-                </div>
+            <div class="chart-box">
+                <iframe src="fig_f3.html"></iframe>
                 <div class="chart-description">
                     <div class="chart-title">Chart 3: Presence of Top 10 Cryptocurrency-Fiat Pairs</div>
                     <p>This chart displays the top 10 cryptocurrency-fiat pairs, highlighting the dominance of Bitcoin and USDT in key markets.</p>
@@ -164,10 +160,8 @@
 
         <!-- Tab 2: Analyzing Volumes -->
         <div class="content">
-            <div class="chart-container">
-                <div class="chart-box">
-                    <iframe src="fig_f4.html"></iframe>
-                </div>
+            <div class="chart-box">
+                <iframe src="fig_f4.html"></iframe>
                 <div class="chart-description">
                     <div class="chart-title">Chart 4: Evolution of the Crypto-Fiat Trading Network (2021-2024)</div>
                     <p>This graph shows the evolution of cryptocurrency-fiat trading volumes, identifying the growing complexity in interactions over time.</p>
@@ -175,10 +169,8 @@
                 </div>
             </div>
 
-            <div class="chart-container">
-                <div class="chart-box">
-                    <iframe src="fig_f5.html"></iframe>
-                </div>
+            <div class="chart-box">
+                <iframe src="fig_f5.html"></iframe>
                 <div class="chart-description">
                     <div class="chart-title">Chart 5: Monthly Transaction Volumes for Cryptocurrencies</div>
                     <p>This time-series chart highlights trends in monthly transaction volumes for cryptocurrencies, particularly Bitcoin and USDT, across different regions.</p>
@@ -186,10 +178,8 @@
                 </div>
             </div>
 
-            <div class="chart-container">
-                <div class="chart-box">
-                    <iframe src="fig_f6.html"></iframe>
-                </div>
+            <div class="chart-box">
+                <iframe src="fig_f6.html"></iframe>
                 <div class="chart-description">
                     <div class="chart-title">Chart 6: Cryptocurrency Trading Volumes by Economic Region</div>
                     <p>This chart compares cryptocurrency transaction volumes between advanced economies (AEs) and emerging market and developing economies (EMDEs).</p>
@@ -200,10 +190,8 @@
 
         <!-- Tab 3: Conclusion -->
         <div class="content">
-            <div class="chart-container">
-                <div class="chart-box">
-                    <iframe src="fig_f7.html"></iframe>
-                </div>
+            <div class="chart-box">
+                <iframe src="fig_f7.html"></iframe>
                 <div class="chart-description">
                     <div class="chart-title">Chart 7: Annual Cryptoasset Volumes by Region (2024)</div>
                     <p>This chart illustrates annual cryptocurrency volumes by region, highlighting adoption differences between EMDEs and AEs.</p>
@@ -214,4 +202,3 @@
     </div>
 </body>
 </html>
-
