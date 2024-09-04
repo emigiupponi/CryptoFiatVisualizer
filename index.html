@@ -29,6 +29,32 @@
             margin-bottom: 20px;
         }
 
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: #AA322F;
+            color: white;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .tab.active {
+            background-color: #333333;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
         .chart-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -68,46 +94,91 @@
             }
         }
     </style>
+    <script>
+        function openTab(tabIndex) {
+            const contents = document.querySelectorAll('.content');
+            const tabs = document.querySelectorAll('.tab');
+
+            contents.forEach((content, index) => {
+                if (index === tabIndex) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+
+            tabs.forEach((tab, index) => {
+                if (index === tabIndex) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <div class="title">CryptoFiat Visualizations</div>
-        
-        <div class="chart-container">
-            <div class="chart-box">
-                <div class="chart-title">Chart 1: Network Visualization of Crypto-Fiat Trading Pairs</div>
-                <iframe src="fig_f1.html"></iframe>
-                <div class="chart-description">This graph shows the relationships between fiat currencies and cryptocurrencies in the Binance market, highlighting key connections and the centrality of each currency during the 2019-2024 period.</div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(0)">Tab 1</div>
+            <div class="tab" onclick="openTab(1)">Tab 2</div>
+            <div class="tab" onclick="openTab(2)">Tab 3</div>
+        </div>
+
+        <div class="content active">
+            <div class="chart-container">
+                <div class="chart-box">
+                    <div class="chart-title">Chart 1: Network Visualization of Crypto-Fiat Trading Pairs</div>
+                    <iframe src="fig_f1.html"></iframe>
+                    <div class="chart-description">Shows the relationships between fiat currencies and cryptocurrencies in Binance, highlighting key connections and centrality of each currency.</div>
+                    <div class="chart-description">**Observation**: Currencies like EUR and BRL show significant connections with multiple cryptocurrencies, indicating active markets in these regions.</div>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-title">Chart 2: Distribution of Unique Cryptocurrencies by Fiat Currency</div>
+                    <iframe src="fig_f2.html"></iframe>
+                    <div class="chart-description">Illustrates the distribution of unique cryptocurrencies linked to different fiat currencies, emphasizing active markets like Turkey and the EU.</div>
+                    <div class="chart-description">**Observation**: The Turkish Lira (TRY) and Euro (EUR) have the highest number of unique cryptocurrencies, suggesting significant market diversity.</div>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-title">Chart 3: Presence of Top 10 Cryptocurrency-Fiat Pairs</div>
+                    <iframe src="fig_f3.html"></iframe>
+                    <div class="chart-description">Displays the top 10 cryptocurrency-fiat pairs, highlighting the dominance of Bitcoin and USDT in key markets.</div>
+                    <div class="chart-description">**Observation**: Bitcoin and USDT are heavily favored across all markets, with notable activity in emerging economies.</div>
+                </div>
             </div>
-            <div class="chart-box">
-                <div class="chart-title">Chart 2: Distribution of Unique Cryptocurrencies by Fiat Currency</div>
-                <iframe src="fig_f2.html"></iframe>
-                <div class="chart-description">This chart illustrates the distribution of unique cryptocurrencies linked to different fiat currencies, emphasizing markets with the highest activity, such as Turkey and the European Union.</div>
+        </div>
+
+        <div class="content">
+            <div class="chart-container">
+                <div class="chart-box">
+                    <div class="chart-title">Chart 4: Evolution of the Crypto-Fiat Trading Network (2021-2024)</div>
+                    <iframe src="fig_f4.html"></iframe>
+                    <div class="chart-description">Shows the evolution of cryptocurrency-fiat trading volumes, identifying the growing complexity in interactions over time.</div>
+                    <div class="chart-description">**Observation**: USDT's dominance increases significantly by 2024, especially in emerging markets like Turkey.</div>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-title">Chart 5: Monthly Transaction Volumes for Cryptocurrencies</div>
+                    <iframe src="fig_f5.html"></iframe>
+                    <div class="chart-description">Highlights monthly transaction volumes for cryptocurrencies, focusing on Bitcoin and USDT across different regions.</div>
+                    <div class="chart-description">**Observation**: USDT transaction volumes have surged in recent months, particularly in EMDEs, while Bitcoin shows steadier growth.</div>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-title">Chart 6: Cryptocurrency Trading Volumes by Economic Region</div>
+                    <iframe src="fig_f6.html"></iframe>
+                    <div class="chart-description">Compares cryptocurrency transaction volumes between advanced economies (AEs) and emerging economies (EMDEs).</div>
+                    <div class="chart-description">**Observation**: EMDEs prefer USDT for its stability, while AEs continue to favor Bitcoin as a long-term investment.</div>
+                </div>
             </div>
-            <div class="chart-box">
-                <div class="chart-title">Chart 3: Presence of Top 10 Cryptocurrency-Fiat Pairs</div>
-                <iframe src="fig_f3.html"></iframe>
-                <div class="chart-description">Displays the top 10 crypto-fiat currency pairs, highlighting the importance of Bitcoin and USDT in key markets.</div>
-            </div>
-            <div class="chart-box">
-                <div class="chart-title">Chart 4: Evolution of the Crypto-Fiat Trading Network (2021-2024)</div>
-                <iframe src="fig_f4.html"></iframe>
-                <div class="chart-description">Visualization of the evolution of cryptocurrency-fiat trading volumes over time, identifying the increasing complexity in the interactions between cryptocurrencies and emerging markets.</div>
-            </div>
-            <div class="chart-box">
-                <div class="chart-title">Chart 5: Monthly Transaction Volumes for Cryptocurrencies</div>
-                <iframe src="fig_f5.html"></iframe>
-                <div class="chart-description">This time-series chart highlights trends in monthly transaction volumes for cryptocurrencies, particularly Bitcoin and USDT, across different regions.</div>
-            </div>
-            <div class="chart-box">
-                <div class="chart-title">Chart 6: Cryptocurrency Trading Volumes by Economic Region</div>
-                <iframe src="fig_f6.html"></iframe>
-                <div class="chart-description">A comparison of cryptocurrency transaction volumes between advanced economies (AEs) and emerging market and developing economies (EMDEs), revealing notable differences in the preference for Bitcoin and USDT.</div>
-            </div>
+        </div>
+
+        <div class="content">
             <div class="chart-box">
                 <div class="chart-title">Chart 7: Annual Cryptoasset Volumes by Region (2024)</div>
                 <iframe src="fig_f7.html"></iframe>
-                <div class="chart-description">This chart illustrates annual cryptocurrency volumes by region, highlighting adoption differences between EMDEs and AEs, with a focus on the most-used cryptocurrencies.</div>
+                <div class="chart-description">Illustrates annual cryptocurrency volumes by region, highlighting adoption differences between EMDEs and AEs.</div>
+                <div class="chart-description">**Observation**: USDT dominates in EMDEs, driven by macroeconomic instability, while Bitcoin holds a stronger position in AEs.</div>
             </div>
         </div>
     </div>
