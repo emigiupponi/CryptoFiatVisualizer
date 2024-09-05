@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoFiat Visualizer</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #ffffff;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            font-size: 22px;
+            color: #333333;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            background-color: #ffffff;
+            color: #333333;
+            cursor: pointer;
+            border: 1px solid #dddddd;
+            margin-right: 5px;
+        }
+
+        .tab.active {
+            background-color: #f9f9f9;
+            border-bottom: 2px solid #333333;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .chart-box {
+            display: flex;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .chart-box iframe {
+            width: 45%;  /* Ajuste para todos los gráficos */
+            height: 300px; 
+            border: none;
+        }
+
+        .chart-description {
+            width: 55%;  /* Ajuste para descripción */
+            font-size: 14px;
+            color: #555555;
+            padding-left: 20px;
+        }
+
+        .chart-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .page-title {
+            font-size: 20px;
+            margin: 10px 0;
+            background-color: #f1f1f1;
+            padding: 10px;
+            width: 100%;
+            border-left: 5px solid #333;
+        }
+
+        .top-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .top-buttons a {
+            text-decoration: none;
+            padding: 8px 12px;
+            background-color: #ffffff;
+            color: #333333;
+            border: 1px solid #dddddd;
+            margin-left: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-box {
+                flex-direction: column;
+            }
+            .chart-description, .chart-box iframe {
+                width: 100%;
+            }
+        }
+    </style>
+    <script>
+        function openTab(tabIndex) {
+            const contents = document.querySelectorAll('.content');
+            const tabs = document.querySelectorAll('.tab');
+
+            contents.forEach((content, index) => {
+                if (index === tabIndex) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+
+            tabs.forEach((tab, index) => {
+                if (index === tabIndex) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">CryptoFiat Visualizations</div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(0)">Methodology</div>
+            <div class="tab" onclick="openTab(1)">Analyzing Volumes</div>
+            <div class="tab" onclick="openTab(2)">Conclusion</div>
+        </div>
+
+        <!-- Top buttons for external links -->
+        <div class="top-buttons">
+            <a href="https://kaggle.com" target="_blank">Kaggle Code</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn Article</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn Journal</a>
+            <a href="https://github.com/emigiupponi/historical_data_binance" target="_blank">Data</a> <!-- Updated link to raw data -->
+        </div>
+
+        <!-- Tab 1: Methodology (Charts 1-3) -->
+        <div class="content active">
+            <div class="page-title">Methodology and Initial Data Description</div>
+
+            <div class="chart-box">
+                <iframe src="graphs/fig_f1.html"></iframe>
+                <div class="chart-description">
+                    <div class="chart-title">Chart 1: Network Visualization of Crypto-Fiat Trading Pairs</div>
+                    <p>This graph shows the relationships between fiat currencies and cryptocurrencies in Binance, highlighting key connections and the centrality of each currency.</p>
+                    <p><strong>Observation:</strong> Currencies like EUR and BRL show significant connections with multiple cryptocurrencies, indicating active markets in these regions.</p>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <iframe src="graphs/fig_f2.html"></iframe>
+                <div class="chart-description">
+                    <div class="chart-title">Chart 2: Distribution of Unique Cryptocurrencies by Fiat Currency</div>
+                    <p>This chart illustrates the distribution of unique cryptocurrencies linked to different fiat currencies, emphasizing markets with the highest activity, such as Turkey and the European Union.</p>
+                    <p><strong>Observation:</strong> The Turkish Lira (TRY) and Euro (EUR) have the highest number of unique cryptocurrencies, suggesting significant market diversity.</p>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <iframe src="graphs/fig_f3.html"></iframe>
+                <div class="chart-description">
+                    <div class="chart-title">Chart 3: Presence of Top 10 Cryptocurrency-Fiat Pairs</div>
+                    <p>This chart displays the top 10 cryptocurrency-fiat pairs, highlighting the dominance of Bitcoin and USDT in key markets.</p>
+                    <p><strong>Observation:</strong> Bitcoin and USDT are heavily favored across all markets, with notable activity in emerging economies.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Analyzing Volumes (Charts 4-6) -->
+        <div class="content">
+            <div class="page-title">Analyzing Cryptocurrency Exchange Volumes</div>
+
+            <div class="chart-box">
+                <iframe src="graphs/fig_f4.html"></iframe>
+                <div class="chart-description">
+                    <div class="chart-title">Chart 4: Evolution of the Crypto-Fiat Trading Network (2021-2024)</div>
+                    <p>This graph shows the evolution of cryptocurrency-fiat trading volumes, identifying the growing complexity in interactions over time.</p>
+                    <p><strong>Observation:</strong> USDT's dominance increases significantly by 2024, especially in emerging markets like Turkey.</p>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <iframe src="graphs/fig_f5.html"></iframe>
+                <div class="chart-description">
+                    <div class="chart-title">Chart 5: Monthly Transaction Volumes for Cryptocurrencies</div>
+                    <p>This time-series chart highlights trends in monthly transaction volumes for cryptocurrencies, particularly Bitcoin and USDT, across different regions.</p>
+                    <p><strong>Observation:</strong> USDT transaction volumes have surged in recent months, particularly in EMDEs, while Bitcoin shows steadier growth.</p>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <iframe src="graphs/fig_f6.html"></iframe>
+                <div class="chart-description">
+                    <div class="chart-title">Chart 6: Cryptocurrency Trading Volumes by Economic Region</div>
+                    <p>This chart compares cryptocurrency transaction volumes between advanced economies (AEs) and emerging market and developing economies (EMDEs).</p>
+                    <p><strong>Observation:</strong> EMDEs prefer USDT for its stability, while AEs continue to favor Bitcoin as a long-term investment.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Conclusion (Chart 7) -->
+        <div class="content">
+            <div class="page-title">Conclusion</div>
+
+            <div class="chart-box">
+                <iframe src="graphs/fig_f7.html"></iframe>
+                <div class="chart-description">
+                    <div class="chart-title">Chart 7: Annual Cryptoasset Volumes by Region (2024)</div>
+                    <p>This chart illustrates annual cryptocurrency volumes by region, highlighting adoption differences between EMDEs and AEs.</p>
+                    <p><strong>Observation:</strong> USDT dominates in EMDEs, driven by macroeconomic instability, while Bitcoin holds a stronger position in AEs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
