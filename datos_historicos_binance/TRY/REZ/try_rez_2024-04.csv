@@ -1,0 +1,2 @@
+timestamp,open,high,low,close,volume,close_time,quote_asset_volume,number_of_trades,taker_buy_base_asset_volume,taker_buy_quote_asset_volume,ignore
+2024-04-30,0.32400000,12.83500000,0.32400000,5.23300000,129177309.40000000,1714521599999,760534118.06220000,108765,63622181.10000000,374249857.07780000,0
