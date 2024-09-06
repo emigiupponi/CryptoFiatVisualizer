@@ -29,10 +29,16 @@
             margin-bottom: 15px;
         }
 
+        .tabs-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
         .tabs {
             display: flex;
             justify-content: flex-start;
-            margin-bottom: 15px;
         }
 
         .tab {
@@ -47,6 +53,19 @@
         .tab.active {
             background-color: #f9f9f9;
             border-bottom: 2px solid #333333;
+        }
+
+        .top-buttons {
+            display: flex;
+        }
+
+        .top-buttons a {
+            text-decoration: none;
+            padding: 8px 12px;
+            background-color: #ffffff;
+            color: #333333;
+            border: 1px solid #dddddd;
+            margin-left: 5px;
         }
 
         .content {
@@ -96,21 +115,6 @@
             border-left: 5px solid #333;
         }
 
-        .top-buttons {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 10px;
-        }
-
-        .top-buttons a {
-            text-decoration: none;
-            padding: 8px 12px;
-            background-color: #ffffff;
-            color: #333333;
-            border: 1px solid #dddddd;
-            margin-left: 5px;
-        }
-
         @media (max-width: 768px) {
             .chart-box {
                 flex-direction: column;
@@ -147,20 +151,22 @@
     <div class="container">
         <div class="title">CryptoFiat Visualizations</div>
 
-        <div class="tabs">
-            <div class="tab active" onclick="openTab(0)">Chart 1</div>
-            <div class="tab" onclick="openTab(1)">Chart 2</div>
-            <div class="tab" onclick="openTab(2)">Chart 3</div>
-            <div class="tab" onclick="openTab(3)">Chart 4</div>
-            <div class="tab" onclick="openTab(4)">Chart 5</div>
-            <div class="tab" onclick="openTab(5)">Chart 6</div>
-            <div class="tab" onclick="openTab(6)">Chart 7</div>
-        </div>
-
-        <!-- Top buttons for external links -->
-        <div class="top-buttons">
-            <a href="https://www.kaggle.com/code/emigiupponi/binance-cryptocurrency-pair-analysis-data-driven" target="_blank">Kaggle Code</a>
-            <a href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7225228708347826177" target="_blank">LinkedIn Article</a>
+        <div class="tabs-container">
+            <div class="tabs">
+                <div class="tab active" onclick="openTab(0)">Chart 1</div>
+                <div class="tab" onclick="openTab(1)">Chart 2</div>
+                <div class="tab" onclick="openTab(2)">Chart 3</div>
+                <div class="tab" onclick="openTab(3)">Chart 4</div>
+                <div class="tab" onclick="openTab(4)">Chart 5</div>
+                <div class="tab" onclick="openTab(5)">Chart 6</div>
+                <div class="tab" onclick="openTab(6)">Chart 7</div>
+            </div>
+            
+            <!-- Top buttons for external links -->
+            <div class="top-buttons">
+                <a href="https://www.kaggle.com/code/emigiupponi/binance-cryptocurrency-pair-analysis-data-driven" target="_blank">Kaggle Code</a>
+                <a href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7225228708347826177" target="_blank">LinkedIn Article</a>
+            </div>
         </div>
 
         <!-- Tab 1 -->
