@@ -145,6 +145,16 @@
                 }
             });
         }
+
+        // Función para manejar la URL y abrir la pestaña correcta en función del hash
+        function openTabFromURL() {
+            const hash = window.location.hash || "#tab1"; // Default to #tab1
+            const tabIndex = parseInt(hash.replace("#tab", "")) - 1;
+            openTab(tabIndex);
+        }
+
+        window.addEventListener("hashchange", openTabFromURL); // Detectar cambios en la URL
+        window.addEventListener("load", openTabFromURL); // Abrir la pestaña correcta al cargar la página
     </script>
 </head>
 <body>
@@ -153,13 +163,13 @@
 
         <div class="tabs-container">
             <div class="tabs">
-                <div class="tab active" onclick="openTab(0)">Chart 1</div>
-                <div class="tab" onclick="openTab(1)">Chart 2</div>
-                <div class="tab" onclick="openTab(2)">Chart 3</div>
-                <div class="tab" onclick="openTab(3)">Chart 4</div>
-                <div class="tab" onclick="openTab(4)">Chart 5</div>
-                <div class="tab" onclick="openTab(5)">Chart 6</div>
-                <div class="tab" onclick="openTab(6)">Chart 7</div>
+                <div class="tab" onclick="location.hash='#tab1'; openTab(0)">Chart 1</div>
+                <div class="tab" onclick="location.hash='#tab2'; openTab(1)">Chart 2</div>
+                <div class="tab" onclick="location.hash='#tab3'; openTab(2)">Chart 3</div>
+                <div class="tab" onclick="location.hash='#tab4'; openTab(3)">Chart 4</div>
+                <div class="tab" onclick="location.hash='#tab5'; openTab(4)">Chart 5</div>
+                <div class="tab" onclick="location.hash='#tab6'; openTab(5)">Chart 6</div>
+                <div class="tab" onclick="location.hash='#tab7'; openTab(6)">Chart 7</div>
             </div>
             
             <!-- Top buttons for external links -->
@@ -170,7 +180,7 @@
         </div>
 
         <!-- Tab 1 -->
-        <div class="content active">
+        <div class="content">
             <div class="page-title">Chart 1: Network Visualization of Crypto-Fiat Trading Pairs</div>
             <div class="chart-box">
                 <iframe src="graphs/fig_f1.html"></iframe>
